@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="public.js" charset="utf-8"></script>
+</head>
+
+
+<script language="javascript">
+	function getImageFromNativeCallBack(state, imagePath, errorMessage) {
+		document.getElementById("droid").value=imagePath;
+		document.getElementById("result").value=state;
+		if(state==00){
+            window.alert('调用成功');
+        }else if (state==91){
+            window.alert('来源类型错误');
+        }else if (state==92){
+            window.alert('图片类型错误');
+        }else if (state==93){
+            window.alert('图片高度错误');
+        }else if (state==94){
+            window.alert('图片宽度错误');
+        }else if (state==95){
+            window.alert('图片名称错误');
+        }else if (state==96){
+            window.alert('图片大小不足1M');
+        }else if (state==99){
+            window.alert('调用失败');
+        }else {
+            window.alert(state+':'+errorMessage);
+        }
+
+
+        document.getElementById("msg").value=errorMessage;
+};
+
+<!--00：成功-->
+<!---->
+<!--91：来源类型错误-->
+<!--92：图片类型错误-->
+<!--93：图片高度错误-->
+<!--94：图片宽度错误-->
+<!--95：图片名称错误-->
+<!--96：图片大小不足1M-->
+<!--99：调用失败（其它错误）-->
+
+// 	function clear() {
+// 		document.getElementById("result").value = """;
+// 		document.getElementById("msg").value = "";
+// 		document.getElementById("droid").src = "ic_launcher.png";
+// 	}
+
+	function test() {
+        
+		var fromType = document.getElementById("fromType").value;
+		var pType = document.getElementById("pType").value;
+		var pHeight = document.getElementById("pHeight").value;
+		var pWidth = document.getElementById("pWidth").value;
+		var pName = document.getElementById("pName").value;
+		var pCom = document.getElementById("pCom").value;
+		var json = {
+			"sourceType" : fromType,
+			"compressionRatio" : pCom,
+			"wide" : pWidth,
+			"height" : pHeight,
+			"imageFile" : pName,
+			"imageFormat" : pType,
+			"onResults" : "getImageFromNativeCallBack"
+		};
+		getImageFrom(json);
+        
+	};
+</script>
+<body>
+	<div style="margin-top: 100px" align="center">
+		<h1>HTML调用相机</h1>
+		<!-- 		<input type="button" value="点击扫描二维码" onclick="test()">  -->
+		来源类型 <input type="text" value="p" id="fromType"/> <br /> <br />
+		图片类型 <input type="text" value="jpg" id="pType"/><br /> <br />
+		图片高度 <input type="text" value="1280" id="pHeight"/><br /> <br />
+		图片宽度 <input type="text" value="960" id="pWidth"/><br /> <br />
+		图片名称 <input type="text" value="aos_xxq" id="pName"/><br /> <br />
+		压缩质量 <input type="text" value="1" id="pCom"><br /> <br />
+		回调函数 <input type="text" value="不可输入" id="callback"/><br /> <br />
+		<input type="button" value="start" onclick="test()"/><br /> <br />
+		<input type="button" value="清除返回日志" onclick="clear()"><br /> <br />
+	</div>
+	<div style="margin-top: 100px" align="center">
+		<h3>调用结果</h3>
+		调用结果 <input type="text" value="wait." id="result"> <br /> <br/ />
+		错误信息<input type="text" value="" id="msg"> <br /> <br />
+		<h3>图片展示</h3>
+		<img id="droid" src="ic_launcher.png" align="center" /><br /> 图片!
+	</div>
+</body>
+</html>
