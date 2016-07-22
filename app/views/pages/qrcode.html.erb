@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="public.js" charset="utf-8"></script>
+</head>
+
+
+<script language="javascript">
+
+
+// 	function clear() {
+// 		document.getElementById("result").value = """;
+// 		document.getElementById("msg").value = "";
+// 		document.getElementById("droid").src = "ic_launcher.png";
+// 	}
+
+	function scanQRCode() {
+        
+		window.location.href = "http://APPS.callBackApps?actionName=scanQRCode&param={ \"customerId\" : \"zhangsan\"}"
+        
+        
+        
+	};
+</script>
+<body>
+	<div style="margin-top: 100px" align="center">
+		<h1>HTML调用相机</h1>
+        <input type="button" value="点击扫描二维码" onclick="scanQRCode()">
+	</div>
+	<div style="margin-top: 100px" align="center">
+		<h3>调用结果</h3>
+        二 维 码 <input type="text" value="" id="qrCode"> <br /> <br/ />
+		调用结果 <input type="text" value="wait." id="state"> <br /> <br/ />
+		错误信息 <input type="text" value="" id="msg"> <br /> <br />
+		
+	</div>
+</body>
+</html>

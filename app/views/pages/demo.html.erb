@@ -8,30 +8,38 @@
 
 <script language="javascript">
 	function getImageFromNativeCallBack(state, imagePath, errorMessage) {
-		document.getElementById("droid").value=imagePath;
+        if(imagePath!="" && imagePath != null){
+            
+            document.getElementById("droid").src=imagePath;
+            document.getElementById("droid").with = document.body.clientWidth*0.8;
+            document.getElementById("droid").height = document.body.clientWidth*0.8;
+        }
+		
 		document.getElementById("result").value=state;
 		if(state==00){
-            window.alert('调用成功');
+<!--            window.alert('调用成功');-->
+            document.getElementById("msg").value='调用成功';
         }else if (state==91){
-            window.alert('来源类型错误');
+            document.getElementById("msg").value='来源类型错误';
+            
         }else if (state==92){
-            window.alert('图片类型错误');
+            document.getElementById("msg").value='图片类型错误';
         }else if (state==93){
-            window.alert('图片高度错误');
+            document.getElementById("msg").value='图片高度错误';
         }else if (state==94){
-            window.alert('图片宽度错误');
+            document.getElementById("msg").value='图片宽度错误';
         }else if (state==95){
-            window.alert('图片名称错误');
+            document.getElementById("msg").value='图片名称错误';
         }else if (state==96){
-            window.alert('图片大小不足1M');
+            document.getElementById("msg").value='图片大小不足1M';
         }else if (state==99){
-            window.alert('调用失败');
+            document.getElementById("msg").value='调用失败';
         }else {
-            window.alert(state+':'+errorMessage);
+            document.getElementById("msg").value=errorMessage;
         }
 
 
-        document.getElementById("msg").value=errorMessage;
+<!--        document.getElementById("msg").value=errorMessage;-->
 };
 
 <!--00：成功-->
@@ -58,6 +66,7 @@
 		var pWidth = document.getElementById("pWidth").value;
 		var pName = document.getElementById("pName").value;
 		var pCom = document.getElementById("pCom").value;
+        var fileSize = document.getElementById("fileSize").value;
 		var json = {
 			"sourceType" : fromType,
 			"compressionRatio" : pCom,
@@ -65,6 +74,7 @@
 			"height" : pHeight,
 			"imageFile" : pName,
 			"imageFormat" : pType,
+            "fileSize" : fileSize,
 			"onResults" : "getImageFromNativeCallBack"
 		};
 		getImageFrom(json);
@@ -79,8 +89,9 @@
 		图片类型 <input type="text" value="jpg" id="pType"/><br /> <br />
 		图片高度 <input type="text" value="1280" id="pHeight"/><br /> <br />
 		图片宽度 <input type="text" value="960" id="pWidth"/><br /> <br />
-		图片名称 <input type="text" value="aos_xxq" id="pName"/><br /> <br />
+		图片名称 <input type="text" value="aosxxq" id="pName"/><br /> <br />
 		压缩质量 <input type="text" value="1" id="pCom"><br /> <br />
+        压缩大小 <input type="text" value="1" id="fileSize"><br /> <br />
 		回调函数 <input type="text" value="不可输入" id="callback"/><br /> <br />
 		<input type="button" value="start" onclick="test()"/><br /> <br />
 		<input type="button" value="清除返回日志" onclick="clear()"><br /> <br />
@@ -88,7 +99,7 @@
 	<div style="margin-top: 100px" align="center">
 		<h3>调用结果</h3>
 		调用结果 <input type="text" value="wait." id="result"> <br /> <br/ />
-		错误信息<input type="text" value="" id="msg"> <br /> <br />
+		状态信息<input type="text" value="" id="msg"> <br /> <br />
 		<h3>图片展示</h3>
 		<img id="droid" src="ic_launcher.png" align="center" /><br /> 图片!
 	</div>

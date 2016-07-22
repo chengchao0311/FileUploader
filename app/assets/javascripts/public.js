@@ -1,4 +1,27 @@
-//调用二维码2D barcode
+//公共回调方法
+
+function fsNativeCallBack(json) {
+    
+<!--00：成功-->
+<!---->
+<!--99：调用失败（其它错误）-->
+    
+    if(json.state != 00){
+        alert('调用失败');
+    }
+    document.getElementById("state").value=json.state;
+    document.getElementById("msg").value=json.errorMessage;
+    
+    if(json.method == 'scanQRCode'){  //扫描二维码回调
+        
+        document.getElementById("qrCode").value=json.qrCode;
+    }
+    
+}
+
+
+
+//调用二维码2D qrcode
 function scanTwoDimensionBarcode(dataJson){
     var successMethod = dataJson.onSuccess;
     var failMethod = dataJson.onFail;
