@@ -67,6 +67,7 @@
 		var pName = document.getElementById("pName").value;
 		var pCom = document.getElementById("pCom").value;
         var fileSize = document.getElementById("fileSize").value;
+<!--        alert(fileSize);-->
 		var json = {
 			"sourceType" : fromType,
 			"compressionRatio" : pCom,
@@ -77,11 +78,17 @@
             "fileSize" : fileSize,
 			"onResults" : "getImageFromNativeCallBack"
 		};
+        
 		getImageFrom(json);
         
 	};
+
+function homePage() {
+    window.location.href = "http://APPS.callBackApps?actionName=backHome"
+};
 </script>
 <body>
+    <input type="button" value="返回首页" onclick="homePage()">
 	<div style="margin-top: 100px" align="center">
 		<h1>HTML调用相机</h1>
 		<!-- 		<input type="button" value="点击扫描二维码" onclick="test()">  -->
@@ -92,7 +99,7 @@
 		图片名称 <input type="text" value="aosxxq" id="pName"/><br /> <br />
 		压缩质量 <input type="text" value="1" id="pCom"><br /> <br />
         压缩大小 <input type="text" value="1" id="fileSize"><br /> <br />
-		回调函数 <input type="text" value="不可输入" id="callback"/><br /> <br />
+<!--		回调函数 <input type="text" value="不可输入" id="callback"/><br /> <br />-->
 		<input type="button" value="start" onclick="test()"/><br /> <br />
 		<input type="button" value="清除返回日志" onclick="clear()"><br /> <br />
 	</div>

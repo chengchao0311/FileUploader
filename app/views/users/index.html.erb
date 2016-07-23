@@ -15,7 +15,11 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-	<td><%= image_tag(user.avatar_url, :size => "100x100") %></td>
+	<%if user.avatar_url %>
+		<td><%= image_tag(user.avatar_url, :size => "100x100") %></td>
+	<% else %>
+		<td> no image </td>
+	<% end %>
         <td><%= link_to '显示', user %></td>
         <td><%= link_to '编辑', edit_user_path(user) %></td>
         <td><%= link_to '删除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

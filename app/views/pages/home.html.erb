@@ -1,2 +1,55 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="public.js" charset="utf-8"></script>
+</head>
+
+
+<script language="javascript">
+	
+
+	function qrCode() {
+        
+        window.location.href = "http://shawnchen.me:3000/pages/qrcode"
+        
+	};
+    function fileUpload() {
+        
+        window.location.href = "http://shawnchen.me:3000/pages/demo"
+        
+    };
+    function tabbar() {
+        
+<!--        window.location.href = "http://shawnchen.me:3000/pages/tabbar"-->
+
+    };
+    function language(lan) {
+        
+        window.location.href = "http://APPS.callBackApps?actionName=changeLang&param={ \"language\" : \""+lan+"\""
+
+    };
+    function deviceToken() {
+        
+        window.location.href = "http://APPS.callBackApps?actionName=getDeviceToken";
+
+    };
+
+
+
+</script>
+<body>
+	<div style="margin-top: 100px" align="center">
+		<h1>首页</h1>
+		<input type="button" value="扫描二维码" onclick="qrCode()"/><br /> <br />
+		<input type="button" value="上传图片" onclick="fileUpload()"><br /> <br />
+        <input type="button" value="底部菜单" onclick="tabbar()"><br /> <br />
+        <input type="button" value="修改语言：简体" onclick="language('S')"><br /> <br />
+        <input type="button" value="修改語言：繁体" onclick="language('C')"><br /> <br />
+        <input type="button" value="Language：English" onclick="language('E')"><br /> <br />
+        <input type="button" value="获取DeviceToken" onclick="deviceToken()"><br /> <br />
+        <input type="text" value="" id="deviceToken"><br /> <br />
+	</div>
+	
+</body>
+</html>
