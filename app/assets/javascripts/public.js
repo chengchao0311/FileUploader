@@ -17,6 +17,10 @@ function fsNativeCallBack(json) {
         document.getElementById("qrCode").value=json.qrCode;
     }
     
+    if(json.method == 'getDeviceToken') {
+        document.getElementById("deviceToken").value=json.deviceToken;
+    }
+    
 }
 
 
@@ -38,9 +42,10 @@ function getImageFrom(dataJson){
     var imageFile = dataJson.imageFile;
     var imageFormat = dataJson.imageFormat;
     var targetEdge = dataJson.targetEdge;
+    var fileSize = dataJson.fileSize;
     var onResults = dataJson.onResults;
     
-    window.location.href = 'http://APPS.callBackApps?actionName=getImageFrom&param={ "sourceType" : "'+ sourceType +'"  ,  "compressionRatio" : "'+ compressionRatio +'"  ,  "wide" : "'+ wide +'"  ,  "height" : "'+ height +'"  ,  "imageFile" : "'+ imageFile +'"  ,  "imageFormat" : "'+ imageFormat +'"  ,  "targetEdge" : "'+ targetEdge +'"  ,  "onResults" : "'+ onResults +'"  }';
+    window.location.href = 'http://APPS.callBackApps?actionName=getImageFrom&param={ "sourceType" : "'+ sourceType +'"  ,  "compressionRatio" : "'+ compressionRatio +'"  ,  "wide" : "'+ wide +'"  ,  "height" : "'+ height +'"  ,  "imageFile" : "'+ imageFile +'"  ,  "imageFormat" : "'+ imageFormat +'"  ,  "targetEdge" : "'+ targetEdge +'"  ,  "fileSize" : "'+ fileSize +'"  ,  "onResults" : "'+ onResults +'"  }';
     
     
 }
