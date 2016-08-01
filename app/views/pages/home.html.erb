@@ -7,49 +7,50 @@
 
 
 <script language="javascript">
-	
 
-	function qrCode() {
-        
-        window.location.href = "http://shawnchen.me:3000/pages/qrcode"
-        
-	};
-    function fileUpload() {
-        
-        window.location.href = "http://shawnchen.me:3000/pages/demo"
-        
-    };
-    function tabbar() {
-        
-<!--        window.location.href = "http://shawnchen.me:3000/pages/tabbar"-->
 
-    };
-    function language(lan) {
-        
-        window.location.href = "http://APPS.callBackApps?actionName=changeLang&param={ \"language\" : \""+lan+"\""
+var localhost = 'http://192.168.3.50:3001/';
+<!--        var localhost = 'http://shawnchen.me/';-->
 
-    };
-    function deviceToken() {
-        
-        window.location.href = "http://APPS.callBackApps?actionName=getDeviceToken";
+function qrCode() {
 
-    };
+//window.location.href = "http://shawnchen.me/pages/qrcode";
+window.location.href = localhost + "pages/qrcode";
+
+};
+function fileUpload() {
+
+//window.location.href = "http://shawnchen.me/pages/demo";
+window.location.href = localhost + "pages/demo";
+
+};
+function tabbar() {
+
+//window.location.href = "http://shawnchen.me/pages/tabbar"
+window.location.href = localhost + "pages/tabbar"
+
+};
+
+
+
 
 
 
 </script>
 <body>
-	<div style="margin-top: 100px" align="center">
-		<h1>首页</h1>
-		<input type="button" value="扫描二维码" onclick="qrCode()"/><br /> <br />
-		<input type="button" value="上传图片" onclick="fileUpload()"><br /> <br />
-        <input type="button" value="底部菜单" onclick="tabbar()"><br /> <br />
-        <input type="button" value="修改语言：简体" onclick="language('S')"><br /> <br />
-        <input type="button" value="修改語言：繁体" onclick="language('C')"><br /> <br />
-        <input type="button" value="Language：English" onclick="language('E')"><br /> <br />
-        <input type="button" value="获取DeviceToken" onclick="deviceToken()"><br /> <br />
-        <input type="text" value="" id="deviceToken"><br /> <br />
-	</div>
-	
+<div style="margin-top: 100px" align="center">
+<h1>首页</h1>
+<input type="button" value="扫描二维码" onclick="qrCode()"/><br /> <br />
+<input type="button" value="上传图片" onclick="fileUpload()"><br /> <br />
+<input type="button" value="底部菜单" onclick="tabbar()"><br /> <br />
+<input type="button" value="修改语言：简体" onclick="language('S')"><br /> <br />
+<input type="button" value="修改語言：繁体" onclick="language('C')"><br /> <br />
+<input type="button" value="Language：English" onclick="language('E')"><br /> <br />
+<input type="button" value="获取DeviceToken" onclick="deviceToken()"><br /> <br />
+<input type="button" value="切换角色：员工" onclick="changeRole('S')"><br /> <br />
+<input type="button" value="切换角色：客户" onclick="changeRole('C')"><br /> <br />
+<input type="text" value="" id="deviceToken"><br /> <br />
+</div>
+
 </body>
 </html>

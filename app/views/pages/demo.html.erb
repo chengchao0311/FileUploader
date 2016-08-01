@@ -7,40 +7,9 @@
 
 
 <script language="javascript">
-	function getImageFromNativeCallBack(state, imagePath, errorMessage) {
-        if(imagePath!="" && imagePath != null){
-            
-            document.getElementById("droid").src=imagePath;
-            document.getElementById("droid").with = document.body.clientWidth*0.8;
-            document.getElementById("droid").height = document.body.clientWidth*0.8;
-        }
-		
-		document.getElementById("result").value=state;
-		if(state==00){
-<!--            window.alert('调用成功');-->
-            document.getElementById("msg").value='调用成功';
-        }else if (state==91){
-            document.getElementById("msg").value='来源类型错误';
-            
-        }else if (state==92){
-            document.getElementById("msg").value='图片类型错误';
-        }else if (state==93){
-            document.getElementById("msg").value='图片高度错误';
-        }else if (state==94){
-            document.getElementById("msg").value='图片宽度错误';
-        }else if (state==95){
-            document.getElementById("msg").value='图片名称错误';
-        }else if (state==96){
-            document.getElementById("msg").value='图片大小不足1M';
-        }else if (state==99){
-            document.getElementById("msg").value='调用失败';
-        }else {
-            document.getElementById("msg").value=errorMessage;
-        }
 
 
-<!--        document.getElementById("msg").value=errorMessage;-->
-};
+
 
 <!--00：成功-->
 <!---->
@@ -52,11 +21,7 @@
 <!--96：图片大小不足1M-->
 <!--99：调用失败（其它错误）-->
 
-// 	function clear() {
-// 		document.getElementById("result").value = """;
-// 		document.getElementById("msg").value = "";
-// 		document.getElementById("droid").src = "ic_launcher.png";
-// 	}
+
 
 	function test() {
         
@@ -79,13 +44,11 @@
 			"onResults" : "getImageFromNativeCallBack"
 		};
         
-		getImageFrom(json);
+		getImageFrom(json);  //调用相机或者相册，获取照片
         
 	};
 
-function homePage() {
-    window.location.href = "http://APPS.callBackApps?actionName=backHome"
-};
+
 </script>
 <body>
     <input type="button" value="返回首页" onclick="homePage()">
@@ -94,10 +57,10 @@ function homePage() {
 		<!-- 		<input type="button" value="点击扫描二维码" onclick="test()">  -->
 		来源类型 <input type="text" value="p" id="fromType"/> <br /> <br />
 		图片类型 <input type="text" value="jpg" id="pType"/><br /> <br />
+        图片宽度 <input type="text" value="960" id="pWidth"/><br /> <br />
 		图片高度 <input type="text" value="1280" id="pHeight"/><br /> <br />
-		图片宽度 <input type="text" value="960" id="pWidth"/><br /> <br />
 		图片名称 <input type="text" value="aosxxq" id="pName"/><br /> <br />
-		压缩质量 <input type="text" value="1" id="pCom"><br /> <br />
+<!--	压缩质量 <input type="text" value="1" id="pCom"><br /> <br />-->
         压缩大小 <input type="text" value="1" id="fileSize"><br /> <br />
 <!--		回调函数 <input type="text" value="不可输入" id="callback"/><br /> <br />-->
 		<input type="button" value="start" onclick="test()"/><br /> <br />

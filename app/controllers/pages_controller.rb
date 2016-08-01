@@ -7,4 +7,8 @@ class PagesController < ApplicationController
 
   def demo
   end
+
+  def tabbar
+  end
+
 end

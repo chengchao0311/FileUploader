@@ -18,18 +18,20 @@
 
 
 
-
-
 </script>
 <body>
     <input type="button" value="返回首页" onclick="homePage()">
 	<div style="margin-top: 100px" align="center">
-		<h1>二维码扫描</h1>
-        <input type="button" value="点击扫描二维码" onclick="scanQRCode()">
+		<h1>底部Bar切换</h1>
+        <input type="button" value="home" onclick="showTabbar('home')"><br /><br />
+        <input type="button" value="expendManage" onclick="showTabbar('expendManage')"><br /><br />
+        <input type="button" value="bill" onclick="showTabbar('bill')"><br /><br />
+        <input type="button" value="records" onclick="showTabbar('records')"><br /><br />
+        <input type="button" value="calendar" onclick="showTabbar('calendar')"><br /><br />
+            
 	</div>
 	<div style="margin-top: 100px" align="center">
 		<h3>调用结果</h3>
-        二 维 码 <input type="text" value="" id="qrCode"> <br /> <br/ />
 		调用结果 <input type="text" value="wait." id="state"> <br /> <br/ />
 		错误信息 <input type="text" value="" id="msg"> <br /> <br />
 		
