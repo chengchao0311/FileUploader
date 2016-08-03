@@ -24,27 +24,27 @@
 
 
 	function test() {
-        
+
 		var fromType = document.getElementById("fromType").value;
 		var pType = document.getElementById("pType").value;
 		var pHeight = document.getElementById("pHeight").value;
 		var pWidth = document.getElementById("pWidth").value;
 		var pName = document.getElementById("pName").value;
-		var pCom = document.getElementById("pCom").value;
+<!--		var pCom = document.getElementById("pCom").value;-->
         var fileSize = document.getElementById("fileSize").value;
 <!--        alert(fileSize);-->
 		var json = {
 			"sourceType" : fromType,
-			"compressionRatio" : pCom,
-			"wide" : pWidth,
+			<!--"compressionRatio" : pCom,-->
+			"width" : pWidth,
 			"height" : pHeight,
-			"imageFile" : pName,
+			"imageName" : pName,
 			"imageFormat" : pType,
             "fileSize" : fileSize,
 			"onResults" : "getImageFromNativeCallBack"
 		};
         
-		getImageFrom(json);  //调用相机或者相册，获取照片
+		getImageFromPhone(json);  //调用相机或者相册，获取照片
         
 	};
 
