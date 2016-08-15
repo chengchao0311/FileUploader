@@ -9,7 +9,7 @@
 <script language="javascript">
 
 
-var localhost = 'http://192.168.3.50:3001/';
+var localhost = 'http://192.168.3.36:3001/';
 <!--        var localhost = 'http://shawnchen.me/';-->
 
 function qrCode() {
@@ -32,7 +32,9 @@ window.location.href = localhost + "pages/tabbar"
 };
 
 
-
+function getAddressBookList() {
+	getContactsData();
+}
 
 
 
@@ -49,6 +51,7 @@ window.location.href = localhost + "pages/tabbar"
 <input type="button" value="获取DeviceToken" onclick="deviceToken()"><br /> <br />
 <input type="button" value="切换角色：员工" onclick="changeRole('S')"><br /> <br />
 <input type="button" value="切换角色：客户" onclick="changeRole('C')"><br /> <br />
+<input type="button" value="获取通讯录" onclick="getAddressBookList()"><br /> <br />
 <input type="text" value="" id="deviceToken"><br /> <br />
 </div>
 

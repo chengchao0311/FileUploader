@@ -1,4 +1,13 @@
 
+//弹出框方法，直接调alert可能iOS会卡死，做一下封装
+function showAlert(message) {
+	setTimeout (function () {
+            alert(message);
+        }, 100);
+}
+
+
+
 /**
  *  公共回调方法
  *
@@ -19,11 +28,12 @@ function fsNativeCallBack(json) {
 //        "errorMessage":"",错误信息
 //        "key":"value"     自定义内容
 //    }
-    // alert(json); 
-    // alert(json.state)
+   
+
     if(json.state != 00){
-        alert('调用失败');
-    }
+        showAlert('调用失败');    
+    };
+
     
     
     if(json.method == 'scanQRCode'){  //扫描二维码回调
@@ -38,17 +48,32 @@ function fsNativeCallBack(json) {
     }else if(json.method == 'getImageFromPhone') {
         getImageFromNativeCallBack(json.state,json.imagePath,json.errorMessage);
 
-        //显示返回信息到HTML，根据需要可以去除
-        document.getElementById("state").value=json.state;
-        document.getElementById("msg").value=json.errorMessage;
+
+    }else if (json.method =='getContactsData') {
+   //  	"concatData": [
+   //  {
+   //    "id": "",
+   //    "name": "",
+   //    "phoneNo": ""
+   //  }
+  	// ]
+    	var array = json.contactsData;
+    	var string = '';
+    	for (var i = 0; i < array.length; i++) {
+    		var dict = array[i];
+    		string = string + "name:"+dict.name+",";
+    	}
+    	showAlert(string);
     }
     
-    
+    //显示返回信息到HTML，根据需要可以去除
+    document.getElementById("state").value=json.state;
+    document.getElementById("msg").value=json.errorMessage;
     
     
 };
 
-//上传图片回调
+//上传图片回调 这个方法主要配合开发测试用，实际HTML可以直接在上面fsNativeCallBack方法处理
 function getImageFromNativeCallBack(state, imagePath, errorMessage) {
     if(imagePath!="" && imagePath != null){
         
@@ -62,7 +87,6 @@ function getImageFromNativeCallBack(state, imagePath, errorMessage) {
         document.getElementById("msg").value='调用成功';
     }else if (state==91){
         document.getElementById("msg").value='来源类型错误';
-        
     }else if (state==92){
         document.getElementById("msg").value='图片类型错误';
     }else if (state==93){
@@ -101,6 +125,10 @@ function scanQRCode() {
     
 };
 
+//获取通讯录
+function getContactsData(){
+	loadURL("http://APPS.callBackApps?actionName=getContactsData");
+}
 
 
 //调用相机或者相册，获取照片
@@ -159,8 +187,8 @@ function loadURL(url) {
         iFrame.setAttribute("frameborder", "0");
         document.body.appendChild(iFrame);
         // 发起请求后这个 iFrame 就没用了，所以把它从 dom 上移除掉
-        iFrame.parentNode.removeChild(iFrame);
-        iFrame = null;
+        //iFrame.parentNode.removeChild(iFrame);
+        //iFrame = null;
 }
     
 
